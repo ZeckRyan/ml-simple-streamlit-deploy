@@ -6,9 +6,7 @@ from sklearn.preprocessing import LabelEncoder
 from sklearn.tree import DecisionTreeClassifier, plot_tree
 from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay, accuracy_score
 
-# ─────────────────────────────────────────
 # 1. KONFIGURASI HALAMAN
-# ─────────────────────────────────────────
 st.set_page_config(
     page_title="Prediksi Kelulusan Mahasiswa",
     page_icon="🎓",
@@ -169,14 +167,12 @@ def main():
 
     # ── Tabs ─────────────────────────────
     tab_pred, tab_viz, tab_data = st.tabs([
-        "🔮 Prediksi Mahasiswa Baru",
-        "📊 Visualisasi Model",
-        "🗃️ Dataset",
+        "Prediksi Mahasiswa Baru",
+        "Visualisasi Model",
+        "Dataset",
     ])
 
-    # ════════════════════════════════════
     # TAB 1 — PREDIKSI
-    # ════════════════════════════════════
     with tab_pred:
         col_form, col_result = st.columns([1, 1.4], gap="large")
 
@@ -215,7 +211,7 @@ def main():
                 hasil = pipeline.predict(input_data)
 
                 if hasil == "Tepat":
-                    st.success(f"### ✅ Lulus TEPAT WAKTU")
+                    st.success(f"###Lulus TEPAT WAKTU")
                     st.info(
                         "Berdasarkan data yang dimasukkan, mahasiswa ini diprediksi "
                         "akan menyelesaikan studi sesuai jadwal yang ditetapkan."
@@ -229,9 +225,7 @@ def main():
             else:
                 st.info("Isi formulir di sebelah kiri, lalu klik **Prediksi Sekarang**.")
 
-    # ════════════════════════════════════
     # TAB 2 — VISUALISASI
-    # ════════════════════════════════════
     with tab_viz:
         st.subheader("Arsitektur Pohon Keputusan & Confusion Matrix")
         st.caption(
@@ -241,9 +235,7 @@ def main():
         fig = pipeline.get_viz_figure(conf_matrix)
         st.pyplot(fig, use_container_width=True)
 
-    # ════════════════════════════════════
-    # TAB 3 — DATASET
-    # ════════════════════════════════════
+   # TAB 3 — DATASET
     with tab_data:
         st.subheader("Dataset Mahasiswa")
 
